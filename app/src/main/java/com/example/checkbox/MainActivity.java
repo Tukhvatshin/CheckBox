@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -40,11 +41,34 @@ public class MainActivity extends AppCompatActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!mBankCardChkBx.isChecked() && !mMobilePhoneChkBx.isChecked() && !mCashAddressChkBx.isChecked())
+                    ;
+                if (mInputMoney.getText().length() == 0) ;
+                if (mInputInfo.getText().length() == 0) {
+                    Toast.makeText(MainActivity.this, R.string.errorMsngr, Toast.LENGTH_SHORT).show();
+                } else if (mBankCardChkBx.isChecked()) {
+                    Toast.makeText(MainActivity.this, getString(R.string.payComplt) + ("\n") +
+                            mInputMoney.getText().toString() + ("\n") +
+                            mInputInfo.getText().toString() + ("\n") +
+                            mBankCardChkBx.getText().toString(), Toast.LENGTH_LONG).show();
+                } else if (mMobilePhoneChkBx.isChecked()) {
+                    Toast.makeText(MainActivity.this, getString(R.string.payComplt) + ("\n") +
+                            mInputMoney.getText().toString() + ("\n") +
+                            mInputInfo.getText().toString() + ("\n") +
+                            mMobilePhoneChkBx.getText().toString(), Toast.LENGTH_LONG).show();
+                } else if (mCashAddressChkBx.isChecked()) {
+                    Toast.makeText(MainActivity.this, getString(R.string.payComplt) + ("\n") +
+                            mInputMoney.getText().toString() + ("\n") +
+                            mInputInfo.getText().toString() + ("\n") +
+                            mCashAddressChkBx.getText().toString(), Toast.LENGTH_LONG).show();
+                }
+
                 mInputMoney.getText().clear();
                 mInputInfo.getText().clear();
-                Toast.makeText(MainActivity.this, "Оплата произведена", Toast.LENGTH_LONG).show();
+                resetCheckBoxes();
             }
         });
+
     }
 
     private void resetCheckBoxes() {
