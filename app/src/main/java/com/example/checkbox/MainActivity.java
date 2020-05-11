@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mInputMoney.getText().length() == 0) ;
-                if (mInputInfo.getText().length() == 0) {
+                if (mInputInfo.getText().length() == 0 || mInputMoney.getText().length() == 0 || isCheckBoxesEmpty()) {
                     Toast.makeText(MainActivity.this, R.string.errorMsngr, Toast.LENGTH_SHORT).show();
                 } else if (mBankCardChkBx.isChecked()) {
                     Toast.makeText(MainActivity.this, getString(R.string.payComplt) + ("\n") +
