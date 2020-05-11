@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mBankCardChkBx.isChecked() && !mMobilePhoneChkBx.isChecked() && !mCashAddressChkBx.isChecked())
-                    ;
                 if (mInputMoney.getText().length() == 0) ;
                 if (mInputInfo.getText().length() == 0) {
                     Toast.makeText(MainActivity.this, R.string.errorMsngr, Toast.LENGTH_SHORT).show();
@@ -69,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private boolean isCheckBoxesEmpty() {
+        return !mBankCardChkBx.isChecked() && !mMobilePhoneChkBx.isChecked() && !mCashAddressChkBx.isChecked();
     }
 
     private void resetCheckBoxes() {
